@@ -15,11 +15,15 @@
     <p>Guess what letter I am thinking of</p>
 
     <div id="wins-text"></div>
+    <br>
     <div id="losses-text"></div>
+    <br>
     <div id="guesses-left"></div>
+    <br>
     <div id="user-guesses"></div>
+    <br>
     <div id="computer-pick"></div>
-  
+
 
     <script type="text/javascript">
 
@@ -30,23 +34,24 @@
         var userGuesses = [];
         var computerPick = [];
         var guessesLeft = 9;
+        var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+            var guessesLeftText = document.getElementById("guesses-left");
+            var userGuessesText = document.getElementById("user-guesses");
 
         computerPick = letters[Math.floor(Math.random() * letters.length)];
         console.log(computerPick)
 
         rendor()
 
-        function rendor (){
-        var winsText = document.getElementById("wins-text");
-        var lossesText = document.getElementById("losses-text");
-        var guessesLeftText = document.getElementById("guesses-left");
-        var userGuesses = document.getElementById("user-guesses");
+        function rendor() {
+            
 
-        winsText.textContent = "wins: " + wins;
-        lossesText.textcontent = "losses: " + losses;
-        guessesLeftText.textContent = "guesses left: " + guessesLeft;
-        userGuesses.textContent = "user guesses: " + userGuesses;
-    }
+            winsText.textContent = "wins: " + wins;
+            lossesText.textContent = "losses: " + losses;
+            guessesLeftText.textContent = "guesses left: " + guessesLeft;
+            userGuessesText.textContent = "user guesses: " + userGuesses;
+        }
 
         document.onkeyup = function (event) {
 
@@ -59,8 +64,12 @@
             if (userPick === computerPick) {
                 wins++;
                 guessesLeft = 9;
-                UserGuesses = [];
+                userGuesses = [];
                 computerPick = letters[Math.floor(Math.random() * letters.length)];
+                winsText.textContent = "wins: " + wins;
+                lossesText.textContent = "losses: " + losses;
+                guessesLeftText.textContent = "guesses left: " + guessesLeft;
+                userGuessesText.textContent = "user guesses: " + userGuesses;
                 console.log(computerPick)
                 console.log(guessesLeft)
                 console.log(wins)
@@ -68,17 +77,23 @@
             else {
                 guessesLeft--;
                 console.log(guessesLeft)
+                guessesLeftText.textContent = "guesses left: " + guessesLeft;
+                userGuessesText.textContent = "user guesses: " + userGuesses;
             }
 
             if (guessesLeft === 0) {
                 losses++;
-                userGUesses = [];
+                userGuesses = [];
                 guessesLeft = 9;
                 computerPick = letters[Math.floor(Math.random() * letters.length)];
+                winsText.textContent = "wins: " + wins;
+                lossesText.textContent = "losses: " + losses;
+                guessesLeftText.textContent = "guesses left: " + guessesLeft;
+                userGuessesText.textContent = "user guesses: " + userGuesses;
                 console.log(computerPick)
             }
         }
-  
+
     </script>
 </body>
 
